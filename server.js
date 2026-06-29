@@ -108,7 +108,7 @@ async function processQueue(jobId, queue, amount, reference, apiKey, email) {
         const timestamp = new Date().toLocaleTimeString();
 
         try {
-            const response = await fetch('https://api.finaswift.com/v1/stkpush', {
+            const response = await fetch('https://api.pesapath.com/v1/stkpush', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ api_key: apiKey, email, amount, msisdn, reference })
