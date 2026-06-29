@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bulk STK Push Suite</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Bulk STK Push Dispatcher</h1>
+            <p>Processes target distributions at a rate limit of 30 requests/min</p>
+        </header>
+
+        <div class="grid">
+            <section class="card form-section">
+                <h2>Dispatch Settings</h2>
+                <form id="pushForm">
+                    <div class="form-group">
+                        <label for="numbers">Phone Numbers (One per line or comma-separated)</label>
+                        <textarea id="numbers" placeholder="0712345678&#10;254798765432&#10;0112345678" required></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="amount">Amount (KES)</label>
+                            <input type="number" id="amount" value="1" min="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reference">Reference / Account Number</label>
+                            <input type="text" id="reference" placeholder="e.g. Invoice #99" required>
+                        </div>
+                    </div>
+                    <button type="submit" id="submitBtn">Fire Bulk Requests</button>
+                </form>
+            </section>
+
+            <section class="card tracking-section">
+                <h2>Live Progress Monitor</h2>
+                <div id="progressContainer" class="hidden">
+                    <div class="progress-bar-wrapper">
+                        <div id="progressBar" class="progress-bar">0%</div>
+                    </div>
+                    <div class="stats">
+                        <span id="statProcessed">Processed: 0/0</span> | 
+                        <span id="statSuccess" class="txt-success">Success: 0</span> | 
+                        <span id="statFailure" class="txt-danger">Failed: 0</span>
+                    </div>
+                </div>
+                <div id="idleState">No tasks currently processing.</div>
+                
+                <h3>Live Execution Stream</h3>
+                <div id="logStream" class="log-stream"></div>
+            </section>
+        </div>
+    </div>
+    <script src="/js/app.js"></script>
+</body>
+</html>
